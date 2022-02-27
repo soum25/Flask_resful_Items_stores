@@ -1,9 +1,9 @@
-from ast import parse
-from flask import Flask, request
+from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required
 
 from security import authenticate, identity
+from user import UserRegister
 
 app = Flask(__name__)
 app.secret_key = "eee451b7ffefce1016d942a5555e4493"
@@ -55,6 +55,7 @@ class Itemlist(Resource):
 
 api.add_resource(Items, '/item/<string:name>')
 api.add_resource(Itemlist, '/items')
+api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
     app.run(debug=True)
